@@ -1,0 +1,132 @@
+// IMPORT DE ARCHIVOS
+@import "utilidades/mixins";
+@import "utilidades/variables";
+
+// --- RESET ---
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+// --- GLOBAL ---
+body {
+    background-color: $color-background;
+    font-family: $font-principal;
+}
+header {
+    background-color: $color-negro;
+}
+
+footer {
+    background-color: $color-negro;
+}
+
+h1 {
+   @include text-style ($color-negro, 24px, 600);
+   margin: 20px 0; 
+}
+
+h2 {
+    @include text-style($color-negro, 20px, 600);
+    margin-top:10px;
+}
+
+h3 {
+    @include text-style($color-blanco, 16px, 600, left);
+    padding: 200px 0 0 55px;
+}
+
+p { 
+    @include text-style($color-texto, 16px, 300);
+    padding: 0 15px; 
+}
+.p-footer { 
+    @include text-style($color-blanco, 16px, 300, left);
+    padding-bottom: 20px;
+    margin-left: 40px;
+}
+
+h1, h2, h3, p {
+    text-align: center;
+}
+
+// --- MENÚ ---
+nav {
+    ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px, 0;
+        gap: 60px; 
+    }
+
+a {
+    text-decoration: none;
+    color: whitesmoke;
+    &:hover { 
+        color: $color-hover;
+    }
+    &:activo { 
+        font-weight:bold; 
+        text-decoration: underline;
+        color: $color-hover;
+    }
+}
+}
+
+li { 
+    @include text-style(whitesmoke, 20px, 600);
+}
+
+// --- COLUMNAS Y CONTENEDORES ---
+.contenedor { 
+    @include grid-container(3);
+}
+
+.contenedor2 { 
+    @include grid-container(4);
+}
+
+.columna {
+    background-color: $color-blanco;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+    img { 
+        max-width: 100%;
+        height:auto;
+        border-radius: 6px;
+        justify-content: center;
+    }
+}
+
+// RESPONSIVE DESIGN ---
+@include responsive(768px) {
+    .contenedor,
+    .contenedor2 { 
+        grid-template-columns: 1fr;
+    }
+
+    nav ul { 
+        flex-direction: column;
+        gap:10px;
+    }
+
+    li { 
+        text-align: center;
+    }
+
+    h1, h2, h3, p {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .p-footer {
+        @include text-style ($color-blanco, 16 pc, 300, left);
+        padding-bottom: 20px; 
+    }
+}
+

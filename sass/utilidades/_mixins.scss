@@ -1,0 +1,24 @@
+// MIXIN PARA TÍTULOS Y PÁRRAFOS
+@mixin text-style($color, $size, $weight, $align: center) {
+    color: $color; 
+    font-size: $size;
+    font-weight: $weight; 
+    text-align: $align;
+}
+
+// MIXING PARA CONTENEDORES
+@mixin grid-container($columns) {
+    display:grid;
+    gap: 20px; 
+    padding: 20px;
+    height: auto;
+    grid-template-columns: repeat($columns, 1fr);
+    text-align: center;
+}
+
+// MIXING PARA RESPONSIVE DESIGN
+@mixin responsive($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
